@@ -2,11 +2,6 @@ package data;
 
 import com.github.javafaker.Faker;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class TestData {
     Faker faker = new Faker();
     public String
