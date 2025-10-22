@@ -1,5 +1,6 @@
 package tests;
 
+import data.TestData;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.ResultModalComponent;
@@ -8,36 +9,36 @@ import pages.components.ResultModalComponent;
 public class RegistrationFillInForm extends TestBase {
         RegistrationPage registrationPage = new RegistrationPage();
         ResultModalComponent resultModalComponent = new ResultModalComponent();
+        TestData td = new TestData();
 
         @Test
         void FillTextFormTest() {
             registrationPage.openPage()
                             .removeBanners()
-                            .setFirstName("Margarita")
-                            .setLastName("Zhuk")
-                            .setEmail("zhukrita@gmail.com")
-                            .setGender("Female")
-                            .setPhone("9663453928")
-                            .setDateOfBirth("1997", "March", "5")
-                            .setSubjects("M")
-                            .setHobbies("Sports")
-                            .setPicture("image1.jpeg")
-                            .setAddress("Address 1")
-                            .setState("NCR")
-                            .setCity("Delhi")
+                            .setFirstName(td.firstName)
+                            .setLastName(td.lastName)
+                            .setEmail(td.userEmail)
+                            .setGender(td.userGender)
+                            .setPhone(td.userPhone)
+                            .setDateOfBirth(td.birthYear, td.birthMonth, td.birthDate)
+                            .setSubjects(td.userSubject)
+                            .setPicture(td.userPicture)
+                            .setAddress(td.userAddress)
+                            .setState(td.userState)
+                            .setCity(td.userCity)
                             .submitForm();
 
             resultModalComponent.checkModalIsOpen()
-                                .checkResult("Student Name", "Margarita Zhuk")
-                                .checkResult("Student Email", "zhukrita@gmail.com")
-                                .checkResult("Gender", "Female")
-                                .checkResult("Mobile", "9663453928")
-                                .checkResult("Date of Birth", "05 March,1997")
-                                .checkResult("Subjects", "Maths")
-                                .checkResult("Hobbies", "Sports")
-                                .checkResult("Picture", "image1.jpeg")
-                                .checkResult("Address", "Address 1")
-                                .checkResult("State and City", "NCR Delhi")
+                                .checkResult("Student Name", td.firstName + " " + td.lastName)
+                                .checkResult("Student Email", td.userEmail)
+                                .checkResult("Gender", td.userGender)
+                                .checkResult("Mobile", td.userPhone)
+                                .checkResult("Date of Birth", td.birthDate + " " + td.birthMonth + "," + td.birthYear)
+                                .checkResult("Subjects", td.userSubject)
+                                .checkResult("Hobbies", td.userHobbies)
+                                .checkResult("Picture", td.userPicture)
+                                .checkResult("Address", td.userAddress)
+                                .checkResult("State and City", td.userState + " " + td.userCity)
                                 .closeModal();
         }
 
@@ -45,19 +46,19 @@ public class RegistrationFillInForm extends TestBase {
     void FillMinimalFormTest() {
         registrationPage.openPage()
                         .removeBanners()
-                        .setFirstName("Margarita")
-                        .setLastName("Zhuk")
-                        .setGender("Female")
-                        .setPhone("9663453928")
-                        .setDateOfBirth("1997", "March", "5")
+                        .setFirstName(td.firstName)
+                        .setLastName(td.lastName)
+                        .setGender(td.userGender)
+                        .setPhone(td.userPhone)
+                        .setDateOfBirth(td.birthYear, td.birthMonth, td.birthDate)
                         .submitForm();
 
         resultModalComponent.checkModalIsOpen()
-                            .checkResult("Student Name", "Margarita Zhuk")
+                            .checkResult("Student Name", td.firstName + " " + td.lastName)
                             .checkEmptyResult("Student Email")
-                            .checkResult("Gender", "Female")
-                            .checkResult("Mobile", "9663453928")
-                            .checkResult("Date of Birth", "05 March,1997")
+                            .checkResult("Gender", td.userGender)
+                            .checkResult("Mobile", td.userPhone)
+                            .checkResult("Date of Birth", td.birthDate + " " + td.birthMonth + "," + td.birthYear)
                             .checkEmptyResult("Subjects")
                             .checkEmptyResult("Hobbies")
                             .checkEmptyResult("Picture")
@@ -84,11 +85,11 @@ public class RegistrationFillInForm extends TestBase {
     void EmailValidationTest() {
         registrationPage.openPage()
                 .removeBanners()
-                .setFirstName("Margarita")
-                .setLastName("Zhuk")
-                .setGender("Female")
-                .setPhone("9663453928")
-                .setEmail("aaa@aa")
+                .setFirstName(td.firstName)
+                .setLastName(td.lastName)
+                .setGender(td.userGender)
+                .setPhone(td.userPhone)
+                .setEmail(td.invalidEmail)
                 .submitForm()
                 .checkEmailValidation();
         resultModalComponent.checkModalIsNotOpen();
