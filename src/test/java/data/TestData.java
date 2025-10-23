@@ -2,8 +2,10 @@ package data;
 
 import com.github.javafaker.Faker;
 
+import java.util.Locale;
+
 public class TestData {
-    Faker faker = new Faker();
+    Faker faker = new Faker(Locale.ENGLISH);
     public String
             firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),

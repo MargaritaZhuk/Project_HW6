@@ -22,6 +22,7 @@ public class RegistrationFillInForm extends TestBase {
                             .setPhone(td.userPhone)
                             .setDateOfBirth(td.birthYear, td.birthMonth, td.birthDate)
                             .setSubjects(td.userSubject)
+                            .setHobbies(td.userHobbies)
                             .setPicture(td.userPicture)
                             .setAddress(td.userAddress)
                             .setState(td.userState)
