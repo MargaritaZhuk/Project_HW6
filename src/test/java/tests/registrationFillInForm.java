@@ -1,18 +1,18 @@
 package tests;
 
-import data.TestData;
+import data.testData;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
-import pages.components.ResultModalComponent;
+import pages.components.resultModalComponent;
+import pages.registrationPage;
 
 
-public class RegistrationFillInForm extends TestBase {
-        RegistrationPage registrationPage = new RegistrationPage();
-        ResultModalComponent resultModalComponent = new ResultModalComponent();
-        TestData td = new TestData();
+public class registrationFillInForm extends testBase {
+        registrationPage registrationPage = new registrationPage();
+        resultModalComponent resultModalComponent = new resultModalComponent();
+        testData td = new testData();
 
         @Test
-        void FillTextFormTest() {
+        void fillTextFormTest() {
             registrationPage.openPage()
                             .removeBanners()
                             .setFirstName(td.firstName)
@@ -44,7 +44,7 @@ public class RegistrationFillInForm extends TestBase {
         }
 
     @Test
-    void FillMinimalFormTest() {
+    void fillMinimalFormTest() {
         registrationPage.openPage()
                         .removeBanners()
                         .setFirstName(td.firstName)
@@ -70,7 +70,7 @@ public class RegistrationFillInForm extends TestBase {
     }
 
     @Test
-    void ValidationTextFormTest() {
+    void validationTextFormTest() {
         registrationPage.openPage()
                         .removeBanners()
                         .submitForm()
@@ -83,7 +83,7 @@ public class RegistrationFillInForm extends TestBase {
     }
 
     @Test
-    void EmailValidationTest() {
+    void emailValidationTest() {
         registrationPage.openPage()
                 .removeBanners()
                 .setFirstName(td.firstName)

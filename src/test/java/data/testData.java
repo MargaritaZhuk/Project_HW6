@@ -4,7 +4,7 @@ import com.github.javafaker.Faker;
 
 import java.util.Locale;
 
-public class TestData {
+public class testData {
     Faker faker = new Faker(Locale.ENGLISH);
     public String
             firstName = faker.name().firstName(),

@@ -6,13 +6,13 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class ResultModalComponent {
+public class resultModalComponent {
 
     private final SelenideElement modalHeader = $(".modal-header"),
             resultsTable = $(".table-responsive"),
             closeButton = $("#closeLargeModal");
 
-    public ResultModalComponent checkModalIsOpen() {
+    public resultModalComponent checkModalIsOpen() {
         modalHeader.shouldHave(text("Thanks for submitting the form"));
         return this;
     }
@@ -21,12 +21,12 @@ public class ResultModalComponent {
         modalHeader.shouldNotBe(visible);
     }
 
-    public ResultModalComponent checkResult(String key, String value) {
+    public resultModalComponent checkResult(String key, String value) {
         resultsTable.$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
 
-    public ResultModalComponent checkEmptyResult(String key) {
+    public resultModalComponent checkEmptyResult(String key) {
         resultsTable.$(byText(key)).parent().$$("td").get(1).shouldBe(empty);
         return this;
     }
