@@ -1,15 +1,15 @@
 package tests;
 
-import data.testData;
+import data.TestData;
 import org.junit.jupiter.api.Test;
-import pages.components.resultModalComponent;
-import pages.registrationPage;
+import pages.components.ResultModalComponent;
+import pages.RegistrationPage;
 
 
-public class registrationFillInForm extends testBase {
-        registrationPage registrationPage = new registrationPage();
-        resultModalComponent resultModalComponent = new resultModalComponent();
-        testData td = new testData();
+public class RegistrationFillInForm extends TestBase {
+        RegistrationPage registrationPage = new RegistrationPage();
+        ResultModalComponent resultModalComponent = new ResultModalComponent();
+        TestData td = new TestData();
 
         @Test
         void fillTextFormTest() {

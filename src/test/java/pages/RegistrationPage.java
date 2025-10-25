@@ -1,14 +1,14 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import pages.components.calendarComponent;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class registrationPage {
+public class RegistrationPage {
 
     private final SelenideElement header = $("h1"),
                                 firstNameInput = $("#firstName"),
@@ -25,112 +25,112 @@ public class registrationPage {
                                 submitButton = $("#submit"),
                                 dateOfBirthInput = $("#dateOfBirthInput");
 
-    calendarComponent calendar = new calendarComponent();
+    CalendarComponent calendar = new CalendarComponent();
 
-    public registrationPage openPage() {
+    public RegistrationPage openPage() {
         open("/automation-practice-form");
         header.shouldHave(text("Practice Form"));
         return this;
     }
 
-    public registrationPage removeBanners() {
+    public RegistrationPage removeBanners() {
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");
             return this;
     }
 
-    public registrationPage setFirstName(String value) {
+    public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
         return this;
     }
 
-    public registrationPage setLastName(String value) {
+    public RegistrationPage setLastName(String value) {
         lastNameInput.setValue(value);
         return this;
     }
 
-    public registrationPage setEmail(String value) {
+    public RegistrationPage setEmail(String value) {
         emailInput.setValue(value);
         return this;
     }
 
-    public registrationPage setGender(String value) {
+    public RegistrationPage setGender(String value) {
         genderSelector.$(byText(value)).click();
         return this;
     }
 
-    public registrationPage setPhone(String value) {
+    public RegistrationPage setPhone(String value) {
         phoneInput.setValue(value);
         return this;
     }
 
-    public registrationPage setDateOfBirth(String year, String month, String day) {
+    public RegistrationPage setDateOfBirth(String year, String month, String day) {
         dateOfBirthInput.click();
         calendar.setDate(year, month, day);
         return this;
     }
 
-    public registrationPage setSubjects(String value) {
+    public RegistrationPage setSubjects(String value) {
         subjectsInput.setValue(value).pressEnter();
         return this;
     }
 
-    public registrationPage setHobbies(String value) {
+    public RegistrationPage setHobbies(String value) {
        hobbiesSelector.$(byText(value)).click();
        return this;
     }
 
-    public registrationPage setPicture(String path) {
+    public RegistrationPage setPicture(String path) {
         uploadPicture.uploadFromClasspath(path);
         return this;
     }
 
-    public registrationPage setAddress(String value) {
+    public RegistrationPage setAddress(String value) {
        addressInput.setValue(value);
        return this;
     }
 
-    public registrationPage setState(String value) {
+    public RegistrationPage setState(String value) {
         stateInput.setValue(value).pressEnter();
         return this;
     }
 
-    public registrationPage setCity(String value) {
+    public RegistrationPage setCity(String value) {
         cityInput.setValue(value).pressEnter();
         return this;
     }
 
-    public registrationPage submitForm() {
+    public RegistrationPage submitForm() {
         submitButton.scrollTo().click();
         return this;
     }
 
-    public registrationPage checkOverallValidation() {
+    public RegistrationPage checkOverallValidation() {
         $(".was-validated").shouldBe(visible);
         return this;
     }
 
-    public registrationPage checkFirstNameValidation(){
+    public RegistrationPage checkFirstNameValidation(){
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 
-    public registrationPage checkLastNameValidation(){
+    public RegistrationPage checkLastNameValidation(){
         lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 
-    public registrationPage checkEmailValidation(){
+    public RegistrationPage checkEmailValidation(){
         emailInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 
-    public registrationPage checkPhoneValidation(){
+    public RegistrationPage checkPhoneValidation(){
         phoneInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 
-    public registrationPage checkGenderValidation() {
+    public RegistrationPage checkGenderValidation() {
         genderSelector.$$("[for^='gender-radio']")
                 .forEach(label -> label.shouldHave(cssValue("color", "rgba(220, 53, 69, 1)")));
         return this;
